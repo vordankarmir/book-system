@@ -14,7 +14,7 @@ async function bootstrap() {
   });
 
   app.enableCors({ origin: '*' });
-  app.useGlobalPipes(new ValidationPipe({}));
+  app.useGlobalPipes(new ValidationPipe());
   app.enableVersioning({ type: VersioningType.URI });
   app.useGlobalFilters(new HttpExceptionFilter());
   app.use(helmet());

@@ -7,11 +7,20 @@ import {
   Delete,
   UseGuards,
   Put,
+  UsePipes,
 } from '@nestjs/common';
 import { AuthorService } from './author.service';
-import { CreateAuthorDto } from './dto/create-author.dto';
-import { UpdateAuthorDto } from './dto/update-author.dto';
+import {
+  CreateAuthorDto,
+  createAuthorDTOSchema,
+} from './dto/create-author.dto';
+import {
+  UpdateAuthorDto,
+  updateAuthorDTOSchema,
+} from './dto/update-author.dto';
 import { JwtGuard } from '../common/guards/jwt.guard';
+import { JoiValidationPipe } from '../common/pipes/validation.pipe';
+import Joi from 'joi';
 
 @UseGuards(JwtGuard)
 @Controller('authors')
@@ -19,6 +28,7 @@ export class AuthorController {
   constructor(private readonly authorService: AuthorService) {}
 
   @Post()
+  @UsePipes(new JoiValidationPipe(createAuthorDTOSchema))
   create(@Body() createAuthorDto: CreateAuthorDto) {
     return this.authorService.create(createAuthorDto);
   }
@@ -29,17 +39,21 @@ export class AuthorController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', new JoiValidationPipe(Joi.string().uuid())) id: string) {
     return this.authorService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {
+  @UsePipes(new JoiValidationPipe(updateAuthorDTOSchema))
+  update(
+    @Param('id', new JoiValidationPipe(Joi.string().uuid())) id: string,
+    @Body() updateAuthorDto: UpdateAuthorDto,
+  ) {
     return this.authorService.update(id, updateAuthorDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', new JoiValidationPipe(Joi.string().uuid())) id: string) {
     return this.authorService.remove(id);
   }
 }

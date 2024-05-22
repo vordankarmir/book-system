@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Author } from '../../author/entities/author.entity';
 import { BaseEntity } from '../../common/entities/base.entity';
+import { IsDate, IsISBN } from 'class-validator';
 
 @Entity()
 export class Book extends BaseEntity {
@@ -16,9 +17,11 @@ export class Book extends BaseEntity {
   @Column()
   title: string;
 
+  @IsISBN()
   @Column({ unique: true })
   ISBN: string;
 
+  @IsDate()
   @Column()
   publishedDate: string;
 

@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity';
 import { Book } from '../../book/entities/book.entity';
+import { IsDate } from 'class-validator';
 
 @Entity()
 export class Author extends BaseEntity {
@@ -13,6 +14,7 @@ export class Author extends BaseEntity {
   @Column({ type: 'varchar', length: 250 })
   biography: string;
 
+  @IsDate()
   @Column()
   birthday: Date;
 
