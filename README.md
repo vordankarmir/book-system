@@ -62,6 +62,10 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## API Documentation
+
+While application is running follow this [link](http://localhost:3001/api) to access documentation with Swagger or use Postman collection provided in [postman](postman) directory.
+
 ## License
 
 Nest is [MIT licensed](LICENSE).

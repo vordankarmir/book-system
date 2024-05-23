@@ -1,0 +1,1208 @@
+{
+	"info": {
+		"_postman_id": "387ecf23-de49-4d0f-a4b3-0a58e4878aae",
+		"name": "Book System API documentation",
+		"description": "# 📄 Get started here\n\nThis template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n## 🔖 How to use this template\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://learning.postman.com/docs/developer/postman-api/postman-api-rate-limits/).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3485470"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGFmNTBiNS0xNjhiLTQxM2QtOWExZC05OGI2ZTIyOWJmODkiLCJlbWFpbCI6ImNjYWFkQGdtYWlsLmNvbSIsImlhdCI6MTcxNjQ2MjYzMSwiZXhwIjoxNzE2NDY2MjMxfQ.u0Et267nfDQrYfLR4OWpurQ5VXADh-ycU3qWyiMZ2X8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "bdaf50b5-168b-413d-9a1d-98b6e229bf89"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/users/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "bdaf50b5-168b-413d-9a1d-98b6e229bf89"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"aaaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "d252b09b-55fe-4cd7-bc9a-dc590021d790"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"aaaa\",\r\n    \"lastName\": \"aaaa\",\r\n    \"email\": \"aaaa@gmail.com\",\r\n    \"password\": \"aaaa\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/users/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "d252b09b-55fe-4cd7-bc9a-dc590021d790"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/users/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "throw new NotFoundException('User not found');"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/users/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "throw new NotFoundException('User not found');"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"HGenry\",\r\n    \"lastName\": \"af\",\r\n    \"email\": \"henrygrigoryan5@gmail.com\",\r\n    \"password\": \"henry\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/auth/sign-up",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Henry\",\r\n    \"lastName\": \"Grigoryan\",\r\n    \"email\": \"henrygrigoryan5@gmail.com\",\r\n    \"password\": \"henry\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/auth/sign-up",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"auth",
+										"sign-up"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"john2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/auth/sign-in",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Sign In",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john@gmail.com\",\r\n    \"password\": \"john2024\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/auth/sign-in",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"auth",
+										"sign-in"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+							}
+						],
+						"url": {
+							"raw": "localhost:3001/auth/refresh-token",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/auth/refresh-token",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzNzQxODMsImV4cCI6MTcxNjM3Nzc4M30.d4tHWak4l7q2AVYj3KCPuEkJQOzf_QwvtW5uHyiQTuo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/auth/logout",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "The `/me` endpoints let you manage information about the authenticated user."
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "Create Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shekspir\",\r\n    \"biography\": \"Very known Shekspir\",\r\n    \"birthday\": \"1506-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/authors",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shekspir\",\r\n    \"biography\": \"Very known Shekspir\",\r\n    \"birthday\": \"1506-02-14\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/authors",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/authors/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/authors/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get all authors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/authors",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all authors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/authors",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"authors"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Shekspir\",\r\n    \"biography\": \"Very known Shekspir\",\r\n    \"birthday\": \"1506-02-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/authors/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Author",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Shekspir\",\r\n    \"biography\": \"Very known Shekspir\",\r\n    \"birthday\": \"1506-02-14\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/authors/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/authors/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"authors",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62aa23ce-f446-4257-8ab5-9fa079d1099a"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Author",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/authors/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"authors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "62aa23ce-f446-4257-8ab5-9fa079d1099a"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Create Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiZGFmNTBiNS0xNjhiLTQxM2QtOWExZC05OGI2ZTIyOWJmODkiLCJlbWFpbCI6ImNjYWFkQGdtYWlsLmNvbSIsImlhdCI6MTcxNjQ1MDgxNywiZXhwIjoxNzE2NDU0NDE3fQ.0KanAVvdxOc1cTFYkM33584kyURrGvzvXpW04ASE-Q8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dune part 2\",\r\n    \"ISBN\": \"978-3-16-14a84a1a0-0\",\r\n    \"publishedDate\": \"1550-2-18\",\r\n    \"authorId\": \"ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Dune part 2\",\r\n    \"ISBN\": \"978-3-16-14a84a1a0-0\",\r\n    \"publishedDate\": \"1550-2-18\",\r\n    \"authorId\": \"ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/books",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"books"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/books/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "e2b5ea37-1c02-4bd1-b912-1b09cc08b52c"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Book",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/books/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "e2b5ea37-1c02-4bd1-b912-1b09cc08b52c"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get Books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/books",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"books"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dune 3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/books/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "e2b5ea37-1c02-4bd1-b912-1b09cc08b52c"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Dune part 2\",\r\n    \"ISBN\": \"978-3-16-14a84a1a0-0\",\r\n    \"publishedDate\": \"1550-2-18\",\r\n    \"authorId\": \"ff06c7e6-8f5d-4ed2-baee-cbe85aacdcec\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3001/books/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "e2b5ea37-1c02-4bd1-b912-1b09cc08b52c"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWZkNjg2ZC0xOGRmLTQ3YjAtOTdlZS0wMjUyYWViMzI0YTIiLCJlbWFpbCI6ImhlbnJ5Z3JpZ29yeWFuNUBnbWFpbC5jb20iLCJpYXQiOjE3MTYzODExMTUsImV4cCI6MTcxNjM4NDcxNX0.4wvgzk6_THLfW1nhqasYPSvo5ilfgoF_iLYACnn0MzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/books/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"books",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1d9a0559-7232-4071-8121-e656081003cd"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhZmQ2ODZkLTE4ZGYtNDdiMC05N2VlLTAyNTJhZWIzMjRhMiIsImVtYWlsIjoiaGVucnlncmlnb3J5YW41QGdtYWlsLmNvbSIsImlhdCI6MTcxNjM2MDg4MSwiZXhwIjoxNzE2MzY4MDgxfQ.eFxEbt9KPwj0ltMSXFXIR7knb_iiWojpM8_nCJxOyik"
+									}
+								],
+								"url": {
+									"raw": "localhost:3001/books/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"books",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1d9a0559-7232-4071-8121-e656081003cd"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
