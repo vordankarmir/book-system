@@ -20,7 +20,7 @@ import {
 } from './dto/update-author.dto';
 import { JwtGuard } from '../common/guards/jwt.guard';
 import { JoiValidationPipe } from '../common/pipes/validation.pipe';
-import Joi from 'joi';
+import * as Joi from 'joi';
 
 @UseGuards(JwtGuard)
 @Controller('authors')

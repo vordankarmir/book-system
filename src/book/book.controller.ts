@@ -14,7 +14,7 @@ import { createBookDto, CreateBookDto } from './dto/create-book.dto';
 import { updateBookDto, UpdateBookDto } from './dto/update-book.dto';
 import { JwtGuard } from '../common/guards/jwt.guard';
 import { JoiValidationPipe } from '../common/pipes/validation.pipe';
-import Joi from 'joi';
+import * as Joi from 'joi';
 
 @UseGuards(JwtGuard)
 @Controller('books')

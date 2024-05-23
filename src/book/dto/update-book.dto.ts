@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateBookDto } from './create-book.dto';
-import Joi from 'joi';
+import * as Joi from 'joi';
 
 export class UpdateBookDto extends PartialType(CreateBookDto) {}
 

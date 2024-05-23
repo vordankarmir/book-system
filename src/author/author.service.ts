@@ -43,11 +43,7 @@ export class AuthorService {
       throw new BadRequestException('Author id is required');
     }
 
-    const author = await this.findOne(id);
-
-    if (author == null) {
-      throw new NotFoundException('Author not found');
-    }
+    await this.findOne(id);
 
     await this.authorRepository.update({ id }, updateAuthorDto);
   }

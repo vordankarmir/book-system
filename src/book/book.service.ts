@@ -19,16 +19,18 @@ export class BookService {
   ) {}
 
   async create(createBookDto: CreateBookDto): Promise<Book> {
-    const author = await this.authorService.findOne(createBookDto.authorId);
+    try {
+      await this.authorService.findOne(createBookDto.authorId);
 
-    if (author == null) {
-      throw new NotFoundException('Author not found');
+      const book = await this.bookRepository.save({
+        ...createBookDto,
+        author: { id: createBookDto.authorId },
+      });
+
+      return book;
+    } catch (e) {
+      throw new BadRequestException({ message: e.message });
     }
-
-    return this.bookRepository.save({
-      ...createBookDto,
-      author: { id: createBookDto.authorId },
-    });
   }
 
   async findAll(): Promise<Book[]> {

@@ -15,7 +15,12 @@ import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: process.env.NODE_ENV
+        ? `.${process.env.NODE_ENV}.env`
+        : '.env',
+    }),
     ThrottlerModule.forRoot([{ limit: 10, ttl: 60 }]),
     TypeOrmModule.forRoot({
       type: 'mysql',

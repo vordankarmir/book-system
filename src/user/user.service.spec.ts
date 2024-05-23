@@ -1,121 +1,127 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserService } from './user.service';
-import { User, UserSchema } from '../../schemas/user.schema';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { Connection, connect, Model } from 'mongoose';
-import { dummyId, userMock } from '../../test/stubs/user.dto.stub';
 import { NotFoundException } from '@nestjs/common';
-import { getModelToken } from '@nestjs/mongoose';
+import { User } from './entities/user.entity';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { dummyId, userMock } from '../../test/stubs/user.dto.stub';
+import { ConfigService } from '@nestjs/config';
+import { Repository } from 'typeorm';
 
 describe('UserService', () => {
   let service: UserService;
-  let mongod: MongoMemoryServer;
-  let mongoConnection: Connection;
-  let userModel: Model<User>;
+  let userRepository: Repository<User>;
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const userRepositoryToken: string | Function = getRepositoryToken(User);
 
   beforeAll(async () => {
-    mongod = await MongoMemoryServer.create();
-    const uri = mongod.getUri();
-    mongoConnection = (await connect(uri)).connection;
-    userModel = mongoConnection.model(User.name, UserSchema);
-
     const userModule: TestingModule = await Test.createTestingModule({
       providers: [
         UserService,
-        { provide: getModelToken(User.name), useValue: userModel },
+        ConfigService,
+        {
+          provide: userRepositoryToken,
+          useClass: Repository,
+        },
       ],
     }).compile();
 
     service = userModule.get<UserService>(UserService);
+    userRepository = userModule.get<Repository<User>>(userRepositoryToken);
   });
 
-  afterAll(async () => {
-    await mongoConnection.dropDatabase();
-    await mongoConnection.close();
-    await mongod.stop();
-  });
+  afterAll(async () => {});
 
-  afterEach(async () => {
-    const collections = mongoConnection.collections;
-    for (const key in collections) {
-      const collection = collections[key];
-      await collection.deleteMany({});
-    }
-  });
+  afterEach(async () => {});
 
   describe('create user', () => {
     it('should create user and return 200 response', async () => {
+      const existingUser = { ...userMock, id: dummyId } as User;
+
+      jest.spyOn(userRepository, 'save').mockResolvedValueOnce(existingUser);
+
       const user = await service.create(userMock);
-      expect(user).toHaveProperty('_id');
-      expect(user.name).toBe(userMock.name);
-    });
-  });
 
-  describe('get all users', () => {
-    it('should get all users', async () => {
-      const userRepository = new userModel(userMock);
-      await userRepository.save();
-
-      const users = await service.findAll();
-      expect(users[0]).toHaveProperty('_id');
-      expect(users[0].name).toEqual(userMock.name);
+      expect(user).toHaveProperty('id');
+      expect(userRepository.save).toHaveBeenCalledWith({ ...userMock });
     });
   });
 
   describe('get user by id', () => {
     it('should get a user by id', async () => {
-      const userRepository = new userModel(userMock);
-      const createdUser = await userRepository.save();
+      const existingUser = { ...userMock, id: dummyId } as User;
 
-      const user = await service.findOne(createdUser._id);
-      expect(user.name).toEqual(userMock.name);
+      jest
+        .spyOn(userRepository, 'findOneBy')
+        .mockResolvedValueOnce(existingUser);
+
+      const user = await service.findOne(dummyId);
+
+      expect(user).toHaveProperty('id');
+      expect(user.id).toEqual(dummyId);
     });
 
     it('should throw 404 if user does not exist', async () => {
       try {
+        jest.spyOn(userRepository, 'findOneBy').mockResolvedValueOnce(null);
+
         await service.findOne(dummyId);
       } catch (e) {
         expect(e).toBeInstanceOf(NotFoundException);
       }
+    });
+  });
 
-      // works with this option as well
-      // await expect(user).rejects.toBeInstanceOf(NotFoundException);
+  describe('get user by email', () => {
+    it('should find user by email', async () => {
+      const existingUser = { ...userMock, id: dummyId } as User;
+
+      jest.spyOn(userRepository, 'findOne').mockResolvedValueOnce(existingUser);
+
+      const user = await service.findByEmail(userMock.email);
+
+      expect(user.id).toEqual(existingUser.id);
+      expect(user.email).toEqual(existingUser.email);
+      expect(userRepository.findOne).toHaveBeenCalledWith({
+        where: { email: existingUser.email },
+      });
     });
   });
 
   describe('update user', () => {
     it('should update user by id', async () => {
-      const userRepository = new userModel(userMock);
-      const createdUser = await userRepository.save();
-
+      const existingUser = { ...userMock, id: dummyId } as User;
       const nameToUpdate = 'Whick';
 
-      const updatedUser = await service.update(createdUser._id, {
-        name: nameToUpdate,
+      jest
+        .spyOn(userRepository, 'findOneBy')
+        .mockResolvedValueOnce(existingUser);
+
+      jest
+        .spyOn(userRepository, 'update')
+        .mockResolvedValueOnce({ raw: [], generatedMaps: [], affected: 1 });
+
+      await service.update(dummyId, {
+        firstName: nameToUpdate,
       });
 
-      expect(updatedUser.name).toEqual(nameToUpdate);
-    });
-
-    it('should throw 404 if user does not exist', async () => {
-      try {
-        const nameToUpdate = 'Whick';
-        await service.update(dummyId, {
-          name: nameToUpdate,
-        });
-      } catch (e) {
-        expect(e).toBeInstanceOf(NotFoundException);
-      }
+      expect(userRepository.update).toHaveBeenCalledWith(
+        { id: dummyId },
+        {
+          firstName: nameToUpdate,
+        },
+      );
     });
   });
 
   describe('delete user', () => {
     it('should delete user by id', async () => {
-      const userRepository = new userModel(userMock);
-      const createdUser = await userRepository.save();
+      jest
+        .spyOn(userRepository, 'delete')
+        .mockResolvedValueOnce({ raw: [], affected: 1 });
 
-      const deleted = await service.remove(createdUser._id);
-      expect(deleted).toBeTruthy();
+      await service.remove(dummyId);
+      expect(userRepository.delete).toHaveBeenCalledWith(dummyId);
     });
   });
 });
