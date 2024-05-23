@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { BaseEntity } from '../../common/entities/base.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User extends BaseEntity {
@@ -31,9 +32,15 @@ export class User extends BaseEntity {
   @ApiProperty({
     example: 'williamShakespeare4ever',
   })
+  @Exclude()
   @Column({ nullable: false })
   password: string;
 
   @Column({ nullable: true })
   refreshToken: string;
+
+  constructor(partial: Partial<User>) {
+    super();
+    Object.assign(this, partial);
+  }
 }
